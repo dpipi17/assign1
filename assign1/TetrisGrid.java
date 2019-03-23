@@ -21,31 +21,36 @@ public class TetrisGrid {
 	public void clearRows() {
 		int clearedRowNum = 0;
 		boolean [][] newGrid = new boolean[grid.length][grid[0].length];
-		int newRow = 0;
-		
 		for(int j = 0; j < grid[0].length; j++) {
-			boolean isClearRow = true;
 			for(int i = 0; i < grid.length; i++) {
-				isClearRow = isClearRow && grid[i][j];
+				newGrid[i][j] = grid[i][j];
+			}
+			
+		}
+		
+		int newRow = 0;
+		for(int j = 0; j < newGrid[0].length; j++) {
+			boolean isClearRow = true;
+			for(int i = 0; i < newGrid.length; i++) {
+				isClearRow = isClearRow && newGrid[i][j];
 			}
 			
 			if(isClearRow) {
 				clearedRowNum++;
 			} else {
-				for(int i = 0; i < grid.length; i++) {
-					newGrid[i][newRow] = grid[i][j];
+				for(int i = 0; i < newGrid.length; i++) {
+					grid[i][newRow] = newGrid[i][j];
 				}
 				newRow++;
 			}
 		}
 		
-		for(int j = grid[0].length - 1; j >= grid[0].length - clearedRowNum; j--) {
-			for(int i = 0; i < grid.length; i++) {
-				newGrid[i][j] = false; 
+		for(int j = newGrid[0].length - 1; j >= newGrid[0].length - clearedRowNum; j--) {
+			for(int i = 0; i < newGrid.length; i++) {
+				grid[i][j] = false; 
 			}
 		}
 		
-		grid = newGrid;
 	}
 	
 	/**
