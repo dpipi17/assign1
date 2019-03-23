@@ -29,6 +29,7 @@ public class TetrisGridTest {
 		assertTrue( Arrays.deepEquals(after, tetris.getGrid()) );
 	}
 	
+	@Test
 	public void testClear2() {
 		boolean[][] before =
 		{	
@@ -48,6 +49,7 @@ public class TetrisGridTest {
 		assertTrue( Arrays.deepEquals(after, tetris.getGrid()) );
 	}
 	
+	@Test
 	public void testClear3() {
 		boolean[][] before =
 		{	
@@ -69,6 +71,7 @@ public class TetrisGridTest {
 		assertTrue( Arrays.deepEquals(after, tetris.getGrid()) );
 	}
 	
+	@Test
 	public void testClear4() {
 		boolean[][] before =
 		{	
@@ -90,6 +93,7 @@ public class TetrisGridTest {
 		assertTrue( Arrays.deepEquals(after, tetris.getGrid()) );
 	}
 	
+	@Test
 	public void testClear5() {
 		boolean[][] before =
 		{	
@@ -111,6 +115,7 @@ public class TetrisGridTest {
 		assertTrue( Arrays.deepEquals(after, tetris.getGrid()) );
 	}
 	
+	@Test
 	public void testClear6() {
 		boolean[][] before =
 		{	
@@ -138,6 +143,7 @@ public class TetrisGridTest {
 		assertTrue( Arrays.deepEquals(after, tetris.getGrid()) );
 	}
 	
+	@Test
 	public void testClear7() {
 		boolean[][] before =
 		{	
@@ -161,6 +167,7 @@ public class TetrisGridTest {
 		assertTrue( Arrays.deepEquals(after, tetris.getGrid()) );
 	}
 	
+	@Test
 	public void testClear8() {
 		boolean[][] before =
 		{	
@@ -178,6 +185,7 @@ public class TetrisGridTest {
 		assertTrue( Arrays.deepEquals(after, tetris.getGrid()) );
 	}
 	
+	@Test
 	public void testClear9() {
 		boolean[][] before =
 		{	
@@ -187,6 +195,30 @@ public class TetrisGridTest {
 		boolean[][] after =
 		{	
 			{false}
+		};
+		
+		TetrisGrid tetris = new TetrisGrid(before);
+		tetris.clearRows();
+
+		assertTrue( Arrays.deepEquals(after, tetris.getGrid()) );
+	}
+	
+	@Test
+	public void testClear10() {
+		boolean[][] before =
+		{	
+			{true, true, false, true, true, },
+			{true, true, true, true, false, },
+			{true, true, false, true, false, },
+			{true, true, true, true, true, }
+		};
+		
+		boolean[][] after =
+		{	
+			{false, true, false, false, false},
+			{true, false, false, false, false},
+			{false, false, false, false, false},
+			{true, true, false, false, false}
 		};
 		
 		TetrisGrid tetris = new TetrisGrid(before);
