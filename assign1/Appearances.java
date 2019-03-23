@@ -10,7 +10,36 @@ public class Appearances {
 	 * @return number of same-appearance elements
 	 */
 	public static <T> int sameCount(Collection<T> a, Collection<T> b) {
-		return 0; // TODO ADD CODE HERE
+		Map<T, Integer> mapOfA = new HashMap<T, Integer>();
+		Map<T, Integer> mapOfB = new HashMap<T, Integer>();
+		
+		countOccur(a, mapOfA);
+		countOccur(b, mapOfB);
+		
+		int counter = 0;
+		for(T key : mapOfA.keySet()) {
+			if(mapOfB.containsKey(key)) {
+				if(mapOfA.get(key).equals(mapOfB.get(key))) {
+					counter++;
+				}
+			}
+		}
+		return counter;
 	}
 	
+	// counts occurance of elements in the collection
+	private static <T> void countOccur(Collection<T> col, Map<T, Integer> map) {
+		Iterator<T> iterator = col.iterator();
+		 
+        while (iterator.hasNext()) {
+        	T nextElem = iterator.next();
+        	
+        	if(map.containsKey(nextElem)) {
+        		int occur = map.get(nextElem);
+        		map.put(nextElem, occur + 1);
+        	} else {
+        		map.put(nextElem, 1);
+        	}
+        }
+	}
 }
